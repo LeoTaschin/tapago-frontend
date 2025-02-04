@@ -1,24 +1,22 @@
-//
-//  ContentView.swift
-//  TaPago
-//
-//  Created by Leonardo Taschin on 04/02/25.
-//
-
 import SwiftUI
 
-struct ContentView: View {
+struct StartingView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            // Fundo verde cobrindo toda a tela
+            Color("VerdePrimary")
+                .ignoresSafeArea()
+
+            // Conteúdo da tela (imagem da logo)
+            VStack {
+                Image("logo")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    StartingView()
 }
