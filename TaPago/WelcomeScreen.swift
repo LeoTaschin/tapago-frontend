@@ -12,88 +12,90 @@ struct WelcomeScreen: View {
     ]
     
     var body: some View {
-        ZStack {
-            Color("BackgroundColor").ignoresSafeArea()
+        NavigationView {
+            ZStack {
+                Color("BackgroundColor").ignoresSafeArea()
 
-            VStack(alignment: .center, spacing: 0) {
-                HStack(spacing: 10) {
-                    Image("IMG_Logo")
+                VStack(alignment: .center, spacing: 0) {
+                    HStack(spacing: 10) {
+                        Image("IMG_Logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 30)
+
+                        Text("TaPago")
+                            .font(.system(size: 24))
+                            .fontWeight(.light)
+                            .foregroundColor(Color("Preto-Branco"))
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.bottom, 100)
+                    
+                    // Imagem animada com fade-in
+                    Image(images[currentIndex])
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 20, height: 30)
-
-                    Text("TaPago")
-                        .font(.system(size: 24))
-                        .fontWeight(.light)
-                        .foregroundColor(Color("Preto-Branco"))
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.bottom, 100)
-                
-                // Imagem animada com fade-in
-                Image(images[currentIndex])
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: 230)
-                    .padding(.bottom, 40)
-                    .transition(.opacity)
-                    .animation(.easeInOut(duration: 1.0), value: currentIndex)
+                        .frame(maxWidth: .infinity, maxHeight: 230)
+                        .padding(.bottom, 40)
+                        .transition(.opacity)
+                        .animation(.easeInOut(duration: 1.0), value: currentIndex)
+                        .padding(.bottom, 10)
                     
-                    .padding(.bottom, 10)
-                
-                // Indicadores de bolinhas
-                HStack {
-                    ForEach(0..<images.count, id: \.self) { index in
-                        Circle()
-                            .fill(index == currentIndex ? Color("VerdePrimary") : Color("CinzaClaro-CinzaEscuro"))
-                            .frame(width: 8, height: 8)
-                            .scaleEffect(index == currentIndex ? 1.3 : 1.0) // Tamanho maior para o ativo
-                            .opacity(index == currentIndex ? 1.0 : 0.3) // Opacidade personalizada
-                            .animation(.easeInOut, value: currentIndex)
+                    // Indicadores de bolinhas
+                    HStack {
+                        ForEach(0..<images.count, id: \.self) { index in
+                            Circle()
+                                .fill(index == currentIndex ? Color("VerdePrimary") : Color("CinzaClaro-CinzaEscuro"))
+                                .frame(width: 8, height: 8)
+                                .scaleEffect(index == currentIndex ? 1.3 : 1.0) // Tamanho maior para o ativo
+                                .opacity(index == currentIndex ? 1.0 : 0.3) // Opacidade personalizada
+                                .animation(.easeInOut, value: currentIndex)
+                        }
                     }
-                }
-                
-                .padding(.bottom, 25)
-                VStack(spacing: 15) {
-                    Text(titles[currentIndex])
-                        .font(.system(size: 20))
-                        .fontWeight(.medium)
-                        .frame(maxWidth: .infinity, maxHeight: 24)
-                        .foregroundColor(Color("Preto-Branco"))
-                        .transition(.opacity)
-                        .animation(.easeInOut(duration: 1.0), value: currentIndex)
+                    .padding(.bottom, 25)
 
-                    Text(subtitles[currentIndex])
-                        .font(.system(size: 20))
-                        .fontWeight(.light)
-                        .frame(maxWidth: .infinity, maxHeight: 48)
-                        .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
-                        .multilineTextAlignment(.center)
-                        .transition(.opacity)
-                        .animation(.easeInOut(duration: 1.0), value: currentIndex)
+                    VStack(spacing: 15) {
+                        Text(titles[currentIndex])
+                            .font(.system(size: 20))
+                            .fontWeight(.medium)
+                            .frame(maxWidth: .infinity, maxHeight: 24)
+                            .foregroundColor(Color("Preto-Branco"))
+                            .transition(.opacity)
+                            .animation(.easeInOut(duration: 1.0), value: currentIndex)
+
+                        Text(subtitles[currentIndex])
+                            .font(.system(size: 20))
+                            .fontWeight(.light)
+                            .frame(maxWidth: .infinity, maxHeight: 48)
+                            .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
+                            .multilineTextAlignment(.center)
+                            .transition(.opacity)
+                            .animation(.easeInOut(duration: 1.0), value: currentIndex)
+                    }
+                    .padding(.bottom, 50)
+                    
+                    // Navigation Link para a tela de Login
+                    NavigationLink(destination: LoginScreen()) {
+                        Text("Começar")
+                            .font(.system(size: 16))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("VerdePrimary"))
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                    .buttonStyle(PlainButtonStyle()) // Para evitar o estilo padrão de botão de link
                 }
-                .padding(.bottom, 50)
-                Button(action: {
-                    // Ação do botão
-                }) {
-                    Text("Começar")
-                        .font(.system(size: 16))
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color("VerdePrimary"))
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                }
+                .padding(.horizontal, 30)
+                .padding(.vertical, 30)
+                .frame(maxHeight: .infinity, alignment: .top)
             }
-            .padding(.horizontal, 30)
-            .padding(.vertical, 30)
-            .frame(maxHeight: .infinity, alignment: .top)
-        }
-        .onAppear {
-            // Inicia um timer para alternar os conteúdos a cada 5 segundos
-            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
-                withAnimation {
-                    currentIndex = (currentIndex + 1) % images.count
+            .onAppear {
+                // Inicia um timer para alternar os conteúdos a cada 5 segundos
+                Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
+                    withAnimation {
+                        currentIndex = (currentIndex + 1) % images.count
+                    }
                 }
             }
         }
