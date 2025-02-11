@@ -12,7 +12,7 @@ struct WelcomeScreen: View {
     ]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("BackgroundColor").ignoresSafeArea()
                 VStack(alignment: .center, spacing: 0) {
@@ -84,6 +84,7 @@ struct WelcomeScreen: View {
                             .cornerRadius(8)
                     }
                     .buttonStyle(PlainButtonStyle()) // Para evitar o estilo padrão de botão de link
+                    .padding(.bottom, 20) // Ajuste de padding para não deixar espaço extra
                 }
                 .padding(.horizontal, 30)
                 .padding(.vertical, 30)
@@ -98,7 +99,7 @@ struct WelcomeScreen: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
