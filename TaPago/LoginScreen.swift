@@ -5,6 +5,19 @@ struct LoginScreen: View {
     @State private var password = ""
     @State private var isStayLoggedIn = false  // Variável para controlar o estado do toggle
     
+    // Estados para controle de erros
+    @State private var isEmailEmpty = false
+    @State private var isPasswordEmpty = false
+    @State private var isIncorrectEmail = false // Erro de email incorreto
+    @State private var isIncorrectPassword = false // Erro de senha incorreta
+    @State private var isAccountLocked = false // Conta bloqueada
+    
+    // Contador de tentativas falhas
+    @State private var failedAttempts = 0
+    
+    // Estado para controlar se a senha está visível ou oculta
+    @State private var isPasswordVisible = false
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor").ignoresSafeArea()
@@ -42,6 +55,25 @@ struct LoginScreen: View {
                         .cornerRadius(8)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
+                        .onChange(of: email) { _ in
+                            isEmailEmpty = email.isEmpty
+                            isIncorrectEmail = false // Resetando o erro de email
+                        }
+                    
+                    // Exibe a mensagem de erro somente se o e-mail estiver vazio ou for incorreto
+                    if isEmailEmpty {
+                        Text("O campo de e-mail não pode estar vazio.")
+                            .font(.system(size: 12))
+                            .fontWeight(.light)
+                            .foregroundColor(.yellow)
+                            
+                    } else if isIncorrectEmail {
+                        Text("E-mail incorreto ou não registrado. Tente novamente")
+                            .font(.system(size: 12))
+                            .fontWeight(.light)
+                            .foregroundColor(.red)
+                            
+                    }
                 }
                 
                 // Campo de Senha
@@ -50,10 +82,42 @@ struct LoginScreen: View {
                         .font(.system(size: 16))
                         .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
                     
-                    SecureField("Digite sua senha", text: $password)
-                        .padding()
-                        .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
-                        .cornerRadius(8)
+                    ZStack(alignment: .trailing) {
+                        if isPasswordVisible {
+                            TextField("Digite sua senha", text: $password)
+                                .padding()
+                                .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
+                                .cornerRadius(8)
+                        } else {
+                            SecureField("Digite sua senha", text: $password)
+                                .padding()
+                                .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
+                                .cornerRadius(8)
+                        }
+                        
+                        Button(action: {
+                            isPasswordVisible.toggle()
+                        }) {
+                            Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                                .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
+                                .padding(.trailing, 10) // Ajusta a posição do ícone
+                        }
+                    }
+                    
+                    // Exibe a mensagem de erro da senha apenas se ela estiver vazia ou incorreta
+                    if isPasswordEmpty {
+                        Text("O campo de senha não pode estar vazio.")
+                            .font(.system(size: 12))
+                            .fontWeight(.light)
+                            .foregroundColor(.yellow)
+                            
+                    } else if isIncorrectPassword {
+                        Text("Senha inválida. Tente novamente")
+                            .font(.system(size: 12))
+                            .fontWeight(.thin)
+                            .foregroundColor(.red)
+                            
+                    }
                 }
                 
                 // Manter conectado
@@ -98,8 +162,31 @@ struct LoginScreen: View {
                 
                 // Botão de Login
                 Button(action: {
-                    // Ação de login
-                    print("Tentando fazer login com e-mail: \(email) e senha: \(password)")
+                    // Lógica de login
+                    if isAccountLocked {
+                        // Se a conta estiver bloqueada
+                        print("Conta bloqueada")
+                    } else {
+                        if email.isEmpty || password.isEmpty {
+                            isEmailEmpty = email.isEmpty
+                            isPasswordEmpty = password.isEmpty
+                        } else if email != "leonardot@tapago.com" {
+                            isIncorrectEmail = true
+                        } else if password != "tapago123" {
+                            isIncorrectPassword = true
+                            failedAttempts += 1
+                        } else {
+                            // Sucesso no login
+                            print("Login bem-sucedido")
+                            failedAttempts = 0 // Resetando o contador de tentativas
+                        }
+                        
+                        // Verifica se o número de tentativas falhas excedeu o limite
+                        if failedAttempts >= 3 {
+                            isAccountLocked = true
+                            print("Conta bloqueada devido a tentativas incorretas")
+                        }
+                    }
                 }) {
                     Text("Acessar")
                         .font(.system(size: 16))
@@ -108,6 +195,15 @@ struct LoginScreen: View {
                         .background(Color("VerdePrimary"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
+                }
+                
+                // Se a conta estiver bloqueada
+                if isAccountLocked {
+                    Text("Sua conta foi bloqueada devido a tentativas incorretas excessivas. Aguarde alguns minutos")
+                        .font(.system(size: 12))
+                        .fontWeight(.regular)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
                 }
                 
                 // Link para tela de cadastro (opcional)
