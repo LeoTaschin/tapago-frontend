@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE9AA8202D5B693000A9B986 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA81F2D5B693000A9B986 /* WelcomeScreen.swift */; };
 		DED750E02D5282EC006D8290 /* TaPagoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750DF2D5282EC006D8290 /* TaPagoApp.swift */; };
-		DED750E22D5282EC006D8290 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750E12D5282EC006D8290 /* ContentView.swift */; };
 		DED750E42D5282EE006D8290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DED750E32D5282EE006D8290 /* Assets.xcassets */; };
 		DED750E72D5282EE006D8290 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DED750E62D5282EE006D8290 /* Preview Assets.xcassets */; };
 		DED750F12D5282EE006D8290 /* TaPagoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750F02D5282EE006D8290 /* TaPagoTests.swift */; };
@@ -34,9 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE9AA81F2D5B693000A9B986 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		DED750DC2D5282EC006D8290 /* TaPago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaPago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED750DF2D5282EC006D8290 /* TaPagoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaPagoApp.swift; sourceTree = "<group>"; };
-		DED750E12D5282EC006D8290 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DED750E32D5282EE006D8290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DED750E62D5282EE006D8290 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DED750EC2D5282EE006D8290 /* TaPagoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaPagoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				DED750DF2D5282EC006D8290 /* TaPagoApp.swift */,
-				DED750E12D5282EC006D8290 /* ContentView.swift */,
+				DE9AA81F2D5B693000A9B986 /* WelcomeScreen.swift */,
 				DED750E32D5282EE006D8290 /* Assets.xcassets */,
 				DED750E52D5282EE006D8290 /* Preview Content */,
 			);
@@ -257,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DED750E22D5282EC006D8290 /* ContentView.swift in Sources */,
+				DE9AA8202D5B693000A9B986 /* WelcomeScreen.swift in Sources */,
 				DED750E02D5282EC006D8290 /* TaPagoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
