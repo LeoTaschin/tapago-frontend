@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LoginScreen: View {
+    @Environment(\.presentationMode) var presentationMode // Acessa o modo de apresentação da view
     @State private var email = ""
     @State private var password = ""
     @State private var isStayLoggedIn = false  // Variável para controlar o estado do toggle
@@ -18,7 +19,7 @@ struct LoginScreen: View {
     // Estado para controlar se a senha está visível ou oculta
     @State private var isPasswordVisible = false
     
-    @Environment(\.presentationMode) var presentationMode // Acessa o modo de apresentação da view
+    
     
     // Estado para controle de navegação
     @State private var navigateToHome = false
@@ -29,9 +30,8 @@ struct LoginScreen: View {
                 Color("BackgroundColor").ignoresSafeArea()
                 
                 VStack(alignment: .center, spacing: 20) {
-                    
-                    HStack{
-                        // Botão de voltar personalizado
+                    // Botão de voltar
+                    HStack {
                         Button(action: {
                             presentationMode.wrappedValue.dismiss() // Fecha a tela atual
                         }) {
@@ -82,7 +82,7 @@ struct LoginScreen: View {
                                 isIncorrectEmail = false // Resetando o erro de email
                             }
                         
-                        // Exibe a mensagem de erro somente se o e-mail estiver vazio ou for incorreto
+                        // Mensagens de erro
                         if isEmailEmpty {
                             Text("O campo de e-mail não pode estar vazio.")
                                 .font(.system(size: 12))
@@ -124,7 +124,7 @@ struct LoginScreen: View {
                             }
                         }
                         
-                        // Exibe a mensagem de erro da senha apenas se ela estiver vazia ou incorreta
+                        // Mensagens de erro
                         if isPasswordEmpty {
                             Text("O campo de senha não pode estar vazio.")
                                 .font(.system(size: 12))
@@ -162,7 +162,7 @@ struct LoginScreen: View {
                     }
                     .frame(maxWidth:.infinity, alignment: .leading)
                     
-                    // Esqueceu a senha no canto direito
+                    // Esqueceu a senha
                     HStack {
                         Spacer()
                         
@@ -182,7 +182,6 @@ struct LoginScreen: View {
                     Button(action: {
                         // Lógica de login
                         if isAccountLocked {
-                            // Se a conta estiver bloqueada
                             print("Conta bloqueada")
                         } else {
                             if email.isEmpty || password.isEmpty {
@@ -244,14 +243,13 @@ struct LoginScreen: View {
                 .padding(.horizontal, 30)
                 .padding(.vertical, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
-                
                 // Condicional de navegação para a HomeScreen
                 NavigationLink(destination: HomeScreen(), isActive: $navigateToHome) {
                     EmptyView()
                 }
             }
-            .navigationBarBackButtonHidden(true) // Esconde o botão de voltar padrão
         }
+        .navigationBarHidden(true)
     }
 }
 

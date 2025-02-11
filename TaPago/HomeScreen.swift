@@ -1,9 +1,3 @@
-//
-//  HomeScreen.swift
-//  TaPago
-//
-//  Created by Leonardo Taschin on 11/02/25.
-//
 
 import SwiftUI
 
@@ -50,6 +44,7 @@ struct HomeScreen: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

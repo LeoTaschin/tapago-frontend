@@ -15,7 +15,6 @@ struct WelcomeScreen: View {
         NavigationView {
             ZStack {
                 Color("BackgroundColor").ignoresSafeArea()
-
                 VStack(alignment: .center, spacing: 0) {
                     HStack(spacing: 10) {
                         Image("IMG_Logo")
@@ -99,6 +98,7 @@ struct WelcomeScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
