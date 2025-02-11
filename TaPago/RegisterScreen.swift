@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct RegisterScreen: View {
+    @Environment(\.presentationMode) var presentationMode // Acessa o modo de apresentação da view
     @State private var email = ""
     @State private var password = ""
     @State private var isStayLoggedIn = false  // Variável para controlar o estado do toggle
@@ -14,7 +15,9 @@ struct RegisterScreen: View {
                 VStack(alignment: .center, spacing: 20) {
                     // Botão de voltar
                     HStack {
-                        Button(action: {}) {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss() // Fecha a tela atual
+                        }) {
                             HStack {
                                 Image(systemName: "arrow.left") // Ícone de seta
                                     .foregroundColor(Color("CinzaClaro-CinzaEscuro")) // Cor do ícone
@@ -40,7 +43,7 @@ struct RegisterScreen: View {
                     .padding(.bottom, 50)
                     
                     // Título da tela
-                    Text("Acesse sua conta")
+                    Text("Crie sua conta")
                         .font(.system(size: 24))
                         .fontWeight(.light)
                         .foregroundColor(Color("Preto-Branco"))
@@ -126,16 +129,13 @@ struct RegisterScreen: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
-                    HStack {
-                        Text("Não tem uma conta?")
+                    HStack (spacing :5 ){
+                        Text("Já possui uma conta?")
                             .font(.system(size: 14))
                             .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
                         
-                        Button(action: {
-                            // Ação para abrir tela de cadastro
-                            print("Abrir tela de cadastro")
-                        }) {
-                            Text("Cadastre-se")
+                        NavigationLink(destination: LoginScreen()) { // A tela para cadastro
+                            Text("Entrar agora")
                                 .font(.system(size: 14))
                                 .foregroundColor(Color("VerdePrimary"))
                         }

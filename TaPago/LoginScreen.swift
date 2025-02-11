@@ -224,21 +224,18 @@ struct LoginScreen: View {
                             .multilineTextAlignment(.center)
                     }
                     
-                    // Link para tela de cadastro (opcional)
                     HStack {
                         Text("Não tem uma conta?")
                             .font(.system(size: 14))
                             .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
                         
-                        Button(action: {
-                            // Ação para abrir tela de cadastro
-                            print("Abrir tela de cadastro")
-                        }) {
+                        NavigationLink(destination: RegisterScreen()) { // A tela para cadastro
                             Text("Cadastre-se")
                                 .font(.system(size: 14))
                                 .foregroundColor(Color("VerdePrimary"))
                         }
                     }
+
                 }
                 .padding(.horizontal, 30)
                 .padding(.vertical, 30)
