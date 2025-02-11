@@ -118,7 +118,7 @@ struct LoginScreen: View {
                             Button(action: {
                                 isPasswordVisible.toggle()
                             }) {
-                                Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
                                     .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
                                     .padding(.trailing, 10) // Ajusta a posição do ícone
                             }
