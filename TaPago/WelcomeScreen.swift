@@ -10,12 +10,12 @@ struct WelcomeScreen: View {
         "Crie grupos, adicione amigos e registre despesas com facilidade.",
         "Veja quem pagou, quem deve e simplifique acertos."
     ]
-
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor").ignoresSafeArea()
 
-            VStack(alignment: .center, spacing: 20) {
+            VStack(alignment: .center, spacing: 0) {
                 HStack(spacing: 10) {
                     Image("IMG_Logo")
                         .resizable()
@@ -28,8 +28,8 @@ struct WelcomeScreen: View {
                         .foregroundColor(Color("Preto-Branco"))
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(20)
-
+                .padding(.bottom, 100)
+                
                 // Imagem animada com fade-in
                 Image(images[currentIndex])
                     .resizable()
@@ -38,8 +38,23 @@ struct WelcomeScreen: View {
                     .padding(.bottom, 40)
                     .transition(.opacity)
                     .animation(.easeInOut(duration: 1.0), value: currentIndex)
-
-                VStack(spacing: 10) {
+                    
+                    .padding(.bottom, 10)
+                
+                // Indicadores de bolinhas
+                HStack {
+                    ForEach(0..<images.count, id: \.self) { index in
+                        Circle()
+                            .fill(index == currentIndex ? Color("VerdePrimary") : Color("CinzaClaro-CinzaEscuro"))
+                            .frame(width: 8, height: 8)
+                            .scaleEffect(index == currentIndex ? 1.3 : 1.0) // Tamanho maior para o ativo
+                            .opacity(index == currentIndex ? 1.0 : 0.3) // Opacidade personalizada
+                            .animation(.easeInOut, value: currentIndex)
+                    }
+                }
+                
+                .padding(.bottom, 25)
+                VStack(spacing: 15) {
                     Text(titles[currentIndex])
                         .font(.system(size: 20))
                         .fontWeight(.medium)
@@ -57,8 +72,7 @@ struct WelcomeScreen: View {
                         .transition(.opacity)
                         .animation(.easeInOut(duration: 1.0), value: currentIndex)
                 }
-                .padding(.bottom, 30)
-
+                .padding(.bottom, 50)
                 Button(action: {
                     // Ação do botão
                 }) {
@@ -72,7 +86,7 @@ struct WelcomeScreen: View {
                 }
             }
             .padding(.horizontal, 30)
-            .padding(.vertical, 50)
+            .padding(.vertical, 30)
             .frame(maxHeight: .infinity, alignment: .top)
         }
         .onAppear {
