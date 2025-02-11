@@ -101,7 +101,7 @@ struct LoginScreen: View {
                     // Ação de login
                     print("Tentando fazer login com e-mail: \(email) e senha: \(password)")
                 }) {
-                    Text("Entrar")
+                    Text("Acessar")
                         .font(.system(size: 16))
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -109,7 +109,6 @@ struct LoginScreen: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
-                .padding(.bottom, 20)
                 
                 // Link para tela de cadastro (opcional)
                 HStack {
