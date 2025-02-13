@@ -15,7 +15,6 @@
 		DE9AA8242D5B85FC00A9B986 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA8232D5B85FC00A9B986 /* HomeScreen.swift */; };
 		DE9AA8262D5BA2EC00A9B986 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA8252D5BA2EC00A9B986 /* LoginScreen.swift */; };
 		DE9AA8282D5BA4BC00A9B986 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA8272D5BA4BC00A9B986 /* Launch Screen.storyboard */; };
-		DE9AA82A2D5BA5A800A9B986 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA8292D5BA5A800A9B986 /* RegisterScreen.swift */; };
 		DE9AA82C2D5BCD9F00A9B986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA82B2D5BCD9F00A9B986 /* GoogleService-Info.plist */; };
 		DE9AA82F2D5BCE2000A9B986 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA82E2D5BCE2000A9B986 /* FirebaseAnalytics */; };
 		DE9AA8312D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA8302D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -28,6 +27,8 @@
 		DED750F12D5282EE006D8290 /* TaPagoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750F02D5282EE006D8290 /* TaPagoTests.swift */; };
 		DED750FB2D5282EE006D8290 /* TaPagoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750FA2D5282EE006D8290 /* TaPagoUITests.swift */; };
 		DED750FD2D5282EE006D8290 /* TaPagoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750FC2D5282EE006D8290 /* TaPagoUITestsLaunchTests.swift */; };
+		DEE0327C2D5E2AA0005BCAE7 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0327B2D5E2AA0005BCAE7 /* RegisterScreen.swift */; };
+		DEE0327E2D5E2E2D005BCAE7 /* EmailVerificationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0327D2D5E2E2D005BCAE7 /* EmailVerificationScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,6 @@
 		DE9AA8232D5B85FC00A9B986 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DE9AA8252D5BA2EC00A9B986 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		DE9AA8272D5BA4BC00A9B986 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		DE9AA8292D5BA5A800A9B986 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		DE9AA82B2D5BCD9F00A9B986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DED750DC2D5282EC006D8290 /* TaPago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaPago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED750DF2D5282EC006D8290 /* TaPagoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaPagoApp.swift; sourceTree = "<group>"; };
@@ -63,6 +63,8 @@
 		DED750F62D5282EE006D8290 /* TaPagoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaPagoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED750FA2D5282EE006D8290 /* TaPagoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaPagoUITests.swift; sourceTree = "<group>"; };
 		DED750FC2D5282EE006D8290 /* TaPagoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaPagoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DEE0327B2D5E2AA0005BCAE7 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		DEE0327D2D5E2E2D005BCAE7 /* EmailVerificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +128,9 @@
 				DED750DF2D5282EC006D8290 /* TaPagoApp.swift */,
 				DE9AA81F2D5B693000A9B986 /* WelcomeScreen.swift */,
 				DE9AA8252D5BA2EC00A9B986 /* LoginScreen.swift */,
-				DE9AA8292D5BA5A800A9B986 /* RegisterScreen.swift */,
 				DE9AA8232D5B85FC00A9B986 /* HomeScreen.swift */,
+				DEE0327B2D5E2AA0005BCAE7 /* RegisterScreen.swift */,
+				DEE0327D2D5E2E2D005BCAE7 /* EmailVerificationScreen.swift */,
 				DED750E32D5282EE006D8290 /* Assets.xcassets */,
 				DED750E52D5282EE006D8290 /* Preview Content */,
 				DE9AA8272D5BA4BC00A9B986 /* Launch Screen.storyboard */,
@@ -306,11 +309,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE9AA82A2D5BA5A800A9B986 /* RegisterScreen.swift in Sources */,
+				DEE0327C2D5E2AA0005BCAE7 /* RegisterScreen.swift in Sources */,
 				DE9AA8242D5B85FC00A9B986 /* HomeScreen.swift in Sources */,
 				DE9AA8262D5BA2EC00A9B986 /* LoginScreen.swift in Sources */,
 				DE9AA8202D5B693000A9B986 /* WelcomeScreen.swift in Sources */,
 				DED750E02D5282EC006D8290 /* TaPagoApp.swift in Sources */,
+				DEE0327E2D5E2E2D005BCAE7 /* EmailVerificationScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,28 +5,20 @@ struct RegisterScreen: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var email = ""
     @State private var password = ""
+    @State private var confirmPassword = ""
     @State private var isPasswordVisible = false
+    @State private var isConfirmPasswordVisible = false
     @State private var errorMessage: String? = nil
-
+    @State private var showPasswordMismatchError = false
+    @State private var isEmailVerificationSent = false
+    @State private var isEmailEntered = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 Color("BackgroundColor").ignoresSafeArea()
                 
                 VStack(alignment: .center, spacing: 20) {
-                    // Botão de voltar
-                    HStack {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            HStack {
-                                Image(systemName: "arrow.left")
-                                    .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
-                                    .imageScale(.large)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
                     
                     // Logo e título
                     HStack(spacing: 10) {
@@ -92,9 +84,51 @@ struct RegisterScreen: View {
                         }
                     }
                     
+                    // Campo de Confirmação de Senha
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Confirme sua senha")
+                            .font(.system(size: 16))
+                            .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
+                        
+                        ZStack(alignment: .trailing) {
+                            if isConfirmPasswordVisible {
+                                TextField("Confirme sua senha", text: $confirmPassword)
+                                    .padding()
+                                    .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
+                                    .cornerRadius(8)
+                            } else {
+                                SecureField("Confirme sua senha", text: $confirmPassword)
+                                    .padding()
+                                    .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
+                                    .cornerRadius(8)
+                            }
+                            
+                            Button(action: {
+                                isConfirmPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isConfirmPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
+                                    .padding(.trailing, 10)
+                            }
+                        }
+                    }
+
+                    // Mensagem de erro de senhas não coincidentes
+                    if showPasswordMismatchError {
+                        Text("As senhas não coincidem.")
+                            .foregroundColor(.red)
+                            .font(.system(size: 14))
+                    }
+
                     // Botão de Registro
                     Button(action: {
-                        registerUser()
+                        if password == confirmPassword {
+                            showPasswordMismatchError = false
+                            isEmailEntered = true
+                            registerUser()
+                        } else {
+                            showPasswordMismatchError = true
+                        }
                     }) {
                         Text("Continuar")
                             .font(.system(size: 16))
@@ -126,6 +160,12 @@ struct RegisterScreen: View {
                 .padding(.horizontal, 30)
                 .padding(.vertical, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
+                
+                // Tela de verificação de e-mail
+                .navigationDestination(isPresented: $isEmailEntered) {
+                    EmailVerificationScreen(email: email)
+                }
+                
             }
         }
         .navigationBarHidden(true)
@@ -142,8 +182,18 @@ struct RegisterScreen: View {
             if let error = error {
                 errorMessage = error.localizedDescription
             } else {
-                print("Usuário registrado com sucesso!")
-                presentationMode.wrappedValue.dismiss()
+                // Envia o e-mail de verificação
+                result?.user.sendEmailVerification { error in
+                    if let error = error {
+                        errorMessage = error.localizedDescription
+                    } else {
+                        print("E-mail de verificação enviado com sucesso!")
+                        // Redireciona para a tela de verificação de e-mail
+                        DispatchQueue.main.async {
+                            isEmailVerificationSent = true
+                        }
+                    }
+                }
             }
         }
     }
