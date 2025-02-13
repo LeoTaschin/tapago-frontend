@@ -1,17 +1,18 @@
-
 import SwiftUI
+import FirebaseAuth
 
 struct HomeScreen: View {
-    @Environment(\.presentationMode) var presentationMode // Acessa o modo de apresentação da view
+    @Environment(\.presentationMode) var presentationMode
+    @State private var isLoggedOut = false // Controla a navegação após o logout
+
     var body: some View {
         NavigationStack {
             ZStack {
                 Color("BackgroundColor").ignoresSafeArea()
                 
                 VStack(alignment: .center, spacing: 20) {
-                    
-                    HStack{
-                        // Botão de voltar personalizado
+                    // Botão de voltar
+                    HStack {
                         Button(action: {
                             presentationMode.wrappedValue.dismiss() // Fecha a tela atual
                         }) {
@@ -38,6 +39,19 @@ struct HomeScreen: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.bottom, 50)
+                    
+                    // Botão de Logout
+                    Button(action: {
+                        logoutUser()
+                    }) {
+                        Text("Deslogar")
+                            .font(.system(size: 16))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
                 }
                 .padding(.horizontal, 30)
                 .padding(.vertical, 30)
@@ -45,6 +59,20 @@ struct HomeScreen: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $isLoggedOut) {
+            WelcomeScreen() // Redireciona para a tela de boas-vindas após o logout
+        }
+    }
+
+    // Função para deslogar o usuário
+    private func logoutUser() {
+        do {
+            try Auth.auth().signOut() // Desloga o usuário
+            isLoggedOut = true // Navega para a tela de boas-vindas
+            print("Usuário deslogado com sucesso!")
+        } catch {
+            print("Erro ao deslogar: \(error.localizedDescription)")
+        }
     }
 }
 

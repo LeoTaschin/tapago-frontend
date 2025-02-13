@@ -7,11 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE5016182D5D722500E5EE47 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DE5016172D5D722500E5EE47 /* FirebaseAuth */; };
+		DE50161A2D5D722500E5EE47 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DE5016192D5D722500E5EE47 /* FirebaseFirestore */; };
+		DE50161C2D5D726300E5EE47 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DE50161B2D5D726300E5EE47 /* FirebaseAuth */; };
+		DE50161E2D5D726300E5EE47 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DE50161D2D5D726300E5EE47 /* FirebaseFirestore */; };
 		DE9AA8202D5B693000A9B986 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA81F2D5B693000A9B986 /* WelcomeScreen.swift */; };
 		DE9AA8242D5B85FC00A9B986 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA8232D5B85FC00A9B986 /* HomeScreen.swift */; };
 		DE9AA8262D5BA2EC00A9B986 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA8252D5BA2EC00A9B986 /* LoginScreen.swift */; };
 		DE9AA8282D5BA4BC00A9B986 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA8272D5BA4BC00A9B986 /* Launch Screen.storyboard */; };
 		DE9AA82A2D5BA5A800A9B986 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA8292D5BA5A800A9B986 /* RegisterScreen.swift */; };
+		DE9AA82C2D5BCD9F00A9B986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA82B2D5BCD9F00A9B986 /* GoogleService-Info.plist */; };
+		DE9AA82F2D5BCE2000A9B986 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA82E2D5BCE2000A9B986 /* FirebaseAnalytics */; };
+		DE9AA8312D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA8302D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion */; };
+		DE9AA8332D5BCE2000A9B986 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA8322D5BCE2000A9B986 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		DE9AA8352D5BCE2000A9B986 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA8342D5BCE2000A9B986 /* FirebaseAppCheck */; };
+		DE9AA8372D5BCE2000A9B986 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = DE9AA8362D5BCE2000A9B986 /* FirebaseAppDistribution-Beta */; };
 		DED750E02D5282EC006D8290 /* TaPagoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED750DF2D5282EC006D8290 /* TaPagoApp.swift */; };
 		DED750E42D5282EE006D8290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DED750E32D5282EE006D8290 /* Assets.xcassets */; };
 		DED750E72D5282EE006D8290 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DED750E62D5282EE006D8290 /* Preview Assets.xcassets */; };
@@ -43,6 +53,7 @@
 		DE9AA8252D5BA2EC00A9B986 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		DE9AA8272D5BA4BC00A9B986 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DE9AA8292D5BA5A800A9B986 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		DE9AA82B2D5BCD9F00A9B986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DED750DC2D5282EC006D8290 /* TaPago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaPago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED750DF2D5282EC006D8290 /* TaPagoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaPagoApp.swift; sourceTree = "<group>"; };
 		DED750E32D5282EE006D8290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +70,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9AA8352D5BCE2000A9B986 /* FirebaseAppCheck in Frameworks */,
+				DE5016182D5D722500E5EE47 /* FirebaseAuth in Frameworks */,
+				DE9AA82F2D5BCE2000A9B986 /* FirebaseAnalytics in Frameworks */,
+				DE9AA8372D5BCE2000A9B986 /* FirebaseAppDistribution-Beta in Frameworks */,
+				DE9AA8332D5BCE2000A9B986 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				DE50161E2D5D726300E5EE47 /* FirebaseFirestore in Frameworks */,
+				DE9AA8312D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				DE50161A2D5D722500E5EE47 /* FirebaseFirestore in Frameworks */,
+				DE50161C2D5D726300E5EE47 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +122,7 @@
 		DED750DE2D5282EC006D8290 /* TaPago */ = {
 			isa = PBXGroup;
 			children = (
+				DE9AA82B2D5BCD9F00A9B986 /* GoogleService-Info.plist */,
 				DED750DF2D5282EC006D8290 /* TaPagoApp.swift */,
 				DE9AA81F2D5B693000A9B986 /* WelcomeScreen.swift */,
 				DE9AA8252D5BA2EC00A9B986 /* LoginScreen.swift */,
@@ -155,6 +176,17 @@
 			dependencies = (
 			);
 			name = TaPago;
+			packageProductDependencies = (
+				DE9AA82E2D5BCE2000A9B986 /* FirebaseAnalytics */,
+				DE9AA8302D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion */,
+				DE9AA8322D5BCE2000A9B986 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				DE9AA8342D5BCE2000A9B986 /* FirebaseAppCheck */,
+				DE9AA8362D5BCE2000A9B986 /* FirebaseAppDistribution-Beta */,
+				DE5016172D5D722500E5EE47 /* FirebaseAuth */,
+				DE5016192D5D722500E5EE47 /* FirebaseFirestore */,
+				DE50161B2D5D726300E5EE47 /* FirebaseAuth */,
+				DE50161D2D5D726300E5EE47 /* FirebaseFirestore */,
+			);
 			productName = TaPago;
 			productReference = DED750DC2D5282EC006D8290 /* TaPago.app */;
 			productType = "com.apple.product-type.application";
@@ -227,6 +259,9 @@
 				Base,
 			);
 			mainGroup = DED750D32D5282EB006D8290;
+			packageReferences = (
+				DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = DED750DD2D5282EC006D8290 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE9AA8282D5BA4BC00A9B986 /* Launch Screen.storyboard in Resources */,
+				DE9AA82C2D5BCD9F00A9B986 /* GoogleService-Info.plist in Resources */,
 				DED750E72D5282EE006D8290 /* Preview Assets.xcassets in Resources */,
 				DED750E42D5282EE006D8290 /* Assets.xcassets in Resources */,
 			);
@@ -441,6 +477,8 @@
 				DEVELOPMENT_TEAM = UD4KH3LP7Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TaPago;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -470,6 +508,8 @@
 				DEVELOPMENT_TEAM = UD4KH3LP7Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TaPago;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -604,6 +644,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE5016172D5D722500E5EE47 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		DE5016192D5D722500E5EE47 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
+		};
+		DE50161B2D5D726300E5EE47 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		DE50161D2D5D726300E5EE47 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
+		};
+		DE9AA82E2D5BCE2000A9B986 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		DE9AA8302D5BCE2000A9B986 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		DE9AA8322D5BCE2000A9B986 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		DE9AA8342D5BCE2000A9B986 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		DE9AA8362D5BCE2000A9B986 /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE9AA82D2D5BCE2000A9B986 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DED750D42D5282EB006D8290 /* Project object */;
 }

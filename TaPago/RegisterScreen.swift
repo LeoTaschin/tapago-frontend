@@ -1,11 +1,12 @@
 import SwiftUI
+import FirebaseAuth
 
 struct RegisterScreen: View {
-    @Environment(\.presentationMode) var presentationMode // Acessa o modo de apresentação da view
+    @Environment(\.presentationMode) var presentationMode
     @State private var email = ""
     @State private var password = ""
-    @State private var isStayLoggedIn = false  // Variável para controlar o estado do toggle
     @State private var isPasswordVisible = false
+    @State private var errorMessage: String? = nil
 
     var body: some View {
         NavigationStack {
@@ -16,11 +17,11 @@ struct RegisterScreen: View {
                     // Botão de voltar
                     HStack {
                         Button(action: {
-                            presentationMode.wrappedValue.dismiss() // Fecha a tela atual
+                            presentationMode.wrappedValue.dismiss()
                         }) {
                             HStack {
-                                Image(systemName: "arrow.left") // Ícone de seta
-                                    .foregroundColor(Color("CinzaClaro-CinzaEscuro")) // Cor do ícone
+                                Image(systemName: "arrow.left")
+                                    .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
                                     .imageScale(.large)
                             }
                         }
@@ -86,41 +87,15 @@ struct RegisterScreen: View {
                             }) {
                                 Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
                                     .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
-                                    .padding(.trailing, 10) // Ajusta a posição do ícone
-                            }
-                        }
-                    }
-                    //Confirmar sua senha
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Senha")
-                            .font(.system(size: 16))
-                            .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
-                        
-                        ZStack(alignment: .trailing) {
-                            if isPasswordVisible {
-                                TextField("Digite sua senha", text: $password)
-                                    .padding()
-                                    .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
-                                    .cornerRadius(8)
-                            } else {
-                                SecureField("Digite sua senha", text: $password)
-                                    .padding()
-                                    .background(Color("CinzaClaro-CinzaEscuro").opacity(0.1))
-                                    .cornerRadius(8)
-                            }
-                            
-                            Button(action: {
-                                isPasswordVisible.toggle()
-                            }) {
-                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
-                                    .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
-                                    .padding(.trailing, 10) // Ajusta a posição do ícone
+                                    .padding(.trailing, 10)
                             }
                         }
                     }
                     
-                    // Botão de Login
-                    Button(action: {}) {
+                    // Botão de Registro
+                    Button(action: {
+                        registerUser()
+                    }) {
                         Text("Continuar")
                             .font(.system(size: 16))
                             .padding()
@@ -129,12 +104,19 @@ struct RegisterScreen: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
-                    HStack (spacing :5 ){
+
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.system(size: 14))
+                    }
+
+                    HStack(spacing: 5) {
                         Text("Já possui uma conta?")
                             .font(.system(size: 14))
                             .foregroundColor(Color("CinzaClaro-CinzaEscuro"))
                         
-                        NavigationLink(destination: LoginScreen()) { // A tela para cadastro
+                        NavigationLink(destination: LoginScreen()) {
                             Text("Entrar agora")
                                 .font(.system(size: 14))
                                 .foregroundColor(Color("VerdePrimary"))
@@ -147,6 +129,23 @@ struct RegisterScreen: View {
             }
         }
         .navigationBarHidden(true)
+    }
+
+    // Função para registrar o usuário
+    private func registerUser() {
+        guard !email.isEmpty, !password.isEmpty else {
+            errorMessage = "Por favor, preencha todos os campos."
+            return
+        }
+
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                errorMessage = error.localizedDescription
+            } else {
+                print("Usuário registrado com sucesso!")
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
 
